@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Minha Loja Online</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo img {
+            max-width: 100%; 
+            max-height: 40px; 
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        #produtos {
+            display: block;
+        }
+
+        .produto {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .produto:hover {
+            transform: scale(1.05);
+        }
+
+        .produto img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .produto p {
+            color: #555;
+        }
+
+        .produto input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .produto button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Adicione outras estilizações necessárias para os botões, formulários, etc. */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="mostrarPagina('produtos')">
+            <img src="https://i.imgur.com/IYG080c.jpeg" alt="Logo da Minha Loja">
+        </div>
+        <ul class="menu">
+            <li><a onclick="mostrarPagina('produtos')">Produtos</a></li>
+            <li><a onclick="mostrarPagina('cadastro')">Cadastro</a></li>
+            <li><a onclick="mostrarPagina('suporte')">Suporte</a></li>
+        </ul>
+    </header>
+
+    <div class="page" id="produtos">
+        <h2>Nossos Produtos</h2>
+        <!-- Adicione aqui a lógica para mostrar dinamicamente seus produtos -->
+        <!-- Exemplo: -->
+        <div class="produto">
+            <img scr="https://www.clubedohardware.com.br/uploads/cms/monthly_2022_08/1655759253_Mouserazercapa.jpg.97b063ed3b4c596edbd1f79e44902ff7.jpg" alt="Produto 1">
+            <h3>Razer Basilisk V3 Pro - Black
+Customizable Wireless Gaming Mouse with Razer HyperScroll Tilt Wheel</h3>
+            <p>Razer™ HyperScroll Tilt Wheel
+13-Zone Chroma Lighting with Full Underglow
+Iconic Ergonomic Form with 10+1 Programmable Buttons</p>
+            <p>Preço: US$159,00</p>
+            <!-- Adicione aqui a funcionalidade para calcular o frete, quantidade, e adicionar ao carrinho -->
+            <input type="text" placeholder="CEP">
+            <input type="number" placeholder="Quantidade">
+            <button onclick="adicionarAoCarrinho('Produto 1')">Adicionar ao Carrinho</button>
+        </div>
+<footer>
+        <button onclick="mostrarCategoria()">Categoria</button>
+    </footer>
+        <!-- Repita o bloco acima para outros produtos -->
+        
+        <!-- Adicione mais produtos conforme necessário -->
+    </div>
+
+    <div class="page" id="cadastro">
+        <h2>Cadastro de Clientes</h2>
+        <button onclick="mostrarPagina('relatorio')">Relatório de Cadastro</button>
+        <form id="cadastroForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone"><br><br>
+            <div class="button-container">
+                <input type="button" value="Cadastrar" onclick="adicionarCadastro()">
+            </div>
+        </form>
+    </div>
+
+    <div class="page" id="relatorio">
+        <h2>Relatório de Cadastro</h2>
+        <table id="cadastroTable">
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="page" id="suporte">
+        <h2>Suporte</h2>
+        <ul>
+            <li><a onclick="mostrarPagina('sobreLoja')">Sobre a Loja</a></li>
+            <li><a onclick="mostrarPagina('duvidasFrequentes')">Dúvidas Frequentes</a></li>
+            <li><a onclick="mostrarPagina('faleConosco')">Fale Conosco</a></li>
+        </ul>
+    </div>
+
+    <div class="page" id="sobreLoja">
+        <h2>Sobre a Loja</h2>
+        <p>
+            Bem-vindo à nossa loja virtual! Somos dedicados a oferecer produtos de alta qualidade para nossos clientes.
+        </p>
+        <button onclick="mostrarPagina('suporte')">Voltar</button>
+    </div>
+
+    <div class="page" id="duvidasFrequentes">
+        <h2>Dúvidas Frequentes</h2>
+        <p>
+            Aqui estão algumas das perguntas mais frequentes que nossos clientes nos fazem.
+        </p>
+        <button onclick="mostrarPagina('suporte')">Voltar</button>
+    </div>
+
+    <div class="page" id="faleConosco">
+        <h2>Fale Conosco</h2>
+        <p>
+            Para entrar em contato conosco, envie um e-mail para <a href="mailto:contato@minhaloja.com">contato@minhaloja.com</a>.
+        </p>
+        <button onclick="mostrarPagina('suporte')">Voltar</button>
+    </div>
+
+    <!-- Adicione outras páginas conforme necessário -->
+
+    <script>
+        // Suas funções JavaScript existentes aqui
+
+       function mostrarPagina(pagina) {
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            document.getElementById(pagina).style.display = 'block';
+        }
+
+        function adicionarAoCarrinho(nomeProduto) {
+            // Adicione aqui a lógica para adicionar o produto ao carrinho
+        }
+
+        function adicionarCadastro() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("telefone").value;
+
+            var tabela = document.getElementById("cadastroTable");
+            var newRow = tabela.insertRow(-1);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.innerHTML = nome;
+            cell2.innerHTML = email;
+            cell3.innerHTML = telefone;
+
+            document.getElementById("nome").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("telefone").value = "";
+        }
+
+        function categorizarProduto(nomeProduto) {
+            var categoria;
+
+            switch (nomeProduto.toLowerCase()) {
+                case 'razer basilisk v3 pro - black':
+                    categoria = 'Mouse';
+                    break;
+                case 'nome do produto 2':
+                    categoria = 'Outra Categoria';
+                    break;
+                // Adicione mais casos conforme necessário
+
+                default:
+                    categoria = 'Categoria Desconhecida';
+            }
+
+            console.log(nomeProduto + ' pertence à categoria: ' + categoria);
+        }
+
+        function mostrarCategoria() {
+            categorizarProduto('Razer Basilisk V3 Pro - Black');
+        }
+    </script>
+</body>
+</html>
